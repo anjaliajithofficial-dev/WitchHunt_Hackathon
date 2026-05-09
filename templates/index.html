@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AxonNova - Neural Intelligence Framework</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="logo">
+          <div class="logo-icon">🧠</div>
+          <div class="logo-text">Axon<span class="highlight">Nova</span></div>
+        </div>
+        <div class="nav-links">
+          <a href="#dashboard" class="active">Dashboard</a>
+          <a href="#demo">Live Demo</a>
+          <a href="#explainability">Explainability</a>
+          <a href="#metrics">Metrics</a>
+        </div>
+        <div class="nav-status">
+          <span class="status-dot online"></span>
+          <span>System Online</span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>
+          Neural Intelligence <span class="gradient-text">Framework</span>
+        </h1>
+        <p>
+          Bridging the gap between static AI models and dynamic real-world
+          applications
+        </p>
+        <div class="hero-badges">
+          <span class="badge">🎯 78.2% Accuracy</span>
+          <span class="badge">⚡ Real-time Inference</span>
+          <span class="badge">🛡️ Ethics Guardrails</span>
+          <span class="badge">💡 Explainable AI</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Dashboard -->
+    <div class="container" id="dashboard">
+      <!-- Live Demo Section -->
+      <div class="section" id="demo">
+        <div class="section-header">
+          <h2>🦾 Real-time Prosthetic Control Simulator</h2>
+          <p>Watch AxonNova interpret neural signals in real-time</p>
+        </div>
+
+        <div class="demo-grid">
+          <!-- Neural Signal Visualization -->
+          <div class="card signal-card">
+            <div class="card-header">
+              <h3>📊 Neural Signal Input</h3>
+              <span class="badge-sm live">LIVE</span>
+            </div>
+            <canvas id="signalCanvas" width="600" height="200"></canvas>
+            <div class="signal-stats">
+              <div class="stat">
+                <span class="stat-label">Signal Strength</span>
+                <span class="stat-value" id="signalStrength">--</span>
+              </div>
+              <div class="stat">
+                <span class="stat-label">Noise Level</span>
+                <span class="stat-value" id="noiseLevel">--</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Prediction Display -->
+          <div class="card prediction-card">
+            <div class="card-header">
+              <h3>🎯 Movement Prediction</h3>
+            </div>
+            <div class="prediction-display">
+              <div class="prediction-movement" id="predictedMovement">
+                <span class="movement-label">Waiting...</span>
+              </div>
+              <div class="confidence-meter">
+                <div class="confidence-label">Confidence</div>
+                <div class="progress-bar">
+                  <div
+                    class="progress-fill"
+                    id="confidenceFill"
+                    style="width: 0%"
+                  ></div>
+                </div>
+                <div class="confidence-value" id="confidenceValue">0%</div>
+              </div>
+            </div>
+
+            <div class="actual-movement" id="actualMovement">
+              <span class="actual-label">Actual Movement:</span>
+              <span class="actual-value">--</span>
+            </div>
+          </div>
+
+          <!-- Control Panel -->
+          <div class="card control-card">
+            <div class="card-header">
+              <h3>🎮 Control Panel</h3>
+            </div>
+            <button
+              class="btn-primary"
+              id="startDemoBtn"
+              onclick="startRealTimeDemo()"
+            >
+              ▶ Start Real-time Demo
+            </button>
+            <button
+              class="btn-secondary"
+              id="singlePredictBtn"
+              onclick="makeSinglePrediction()"
+            >
+              🔄 Single Prediction
+            </button>
+            <div class="demo-status" id="demoStatus">
+              <span class="status-text">Ready</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Probability Distribution -->
+      <div class="section">
+        <div class="card full-width">
+          <div class="card-header">
+            <h3>📈 Movement Probability Distribution</h3>
+            <p>Confidence scores for all 9 possible movements</p>
+          </div>
+          <canvas id="probabilityChart" width="800" height="300"></canvas>
+        </div>
+      </div>
+
+      <!-- Explainability Section -->
+      <div class="section" id="explainability">
+        <div class="section-header">
+          <h2>🔍 Why did AxonNova make that decision?</h2>
+          <p>Complete transparency into neural pathway activation</p>
+        </div>
+
+        <div class="explainability-grid">
+          <div class="card">
+            <div class="card-header">
+              <h3>⚙️ Synaptic Activation</h3>
+            </div>
+            <div id="synapticActivation">
+              <div class="activation-bar">
+                <span>Layer 1</span>
+                <div class="bar">
+                  <div class="fill" style="width: 85%"></div>
+                </div>
+                <span>85%</span>
+              </div>
+              <div class="activation-bar">
+                <span>Layer 2</span>
+                <div class="bar">
+                  <div class="fill" style="width: 62%"></div>
+                </div>
+                <span>62%</span>
+              </div>
+              <div class="activation-bar">
+                <span>Layer 3</span>
+                <div class="bar">
+                  <div class="fill" style="width: 34%"></div>
+                </div>
+                <span>34%</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h3>🧠 Reasoning Chain</h3>
+            </div>
+            <div class="reasoning-list" id="reasoningList">
+              <div class="reasoning-item">
+                → Detected high-frequency neural burst
+              </div>
+              <div class="reasoning-item">
+                → Pattern matched 'grasp' movement
+              </div>
+              <div class="reasoning-item">
+                → Guardrail check: Safe within bounds
+              </div>
+              <div class="reasoning-item">
+                → Prediction: GRASP with 87% confidence
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h3>🛡️ Guardrail Status</h3>
+            </div>
+            <div class="guardrail-status" id="guardrailStatus">
+              <div class="guardrail-safe">✅ All safety checks passed</div>
+              <div class="guardrail-metrics">
+                <div>Bias Score: <span class="value">0.02</span></div>
+                <div>Safety Margin: <span class="value">92%</span></div>
+                <div>Filtered Outputs: <span class="value">0</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Performance Metrics -->
+      <div class="section" id="metrics">
+        <div class="section-header">
+          <h2>📊 System Performance Metrics</h2>
+          <p>Real-time monitoring of AxonNova's efficiency</p>
+        </div>
+
+        <div class="metrics-grid">
+          <div class="metric-card">
+            <div class="metric-icon">🎯</div>
+            <div class="metric-info">
+              <div class="metric-value" id="accuracyValue">78.2%</div>
+              <div class="metric-label">Validation Accuracy</div>
+            </div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-icon">⚡</div>
+            <div class="metric-info">
+              <div class="metric-value" id="complexityValue">0.85</div>
+              <div class="metric-label">Avg Input Complexity</div>
+            </div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-icon">🧬</div>
+            <div class="metric-info">
+              <div class="metric-value">659K</div>
+              <div class="metric-label">Parameters</div>
+            </div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-icon">💾</div>
+            <div class="metric-info">
+              <div class="metric-value">200</div>
+              <div class="metric-label">Memory Buffer Size</div>
+            </div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-icon">🛡️</div>
+            <div class="metric-info">
+              <div class="metric-value" id="guardrailCount">0</div>
+              <div class="metric-label">Safety Interventions</div>
+            </div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-icon">🌿</div>
+            <div class="metric-info">
+              <div class="metric-value">-42%</div>
+              <div class="metric-label">Carbon Footprint</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Training History -->
+      <div class="section">
+        <div class="card full-width">
+          <div class="card-header">
+            <h3>📉 Training Progress</h3>
+            <button class="btn-small" onclick="retrainModel()">
+              🔄 Retrain Model
+            </button>
+          </div>
+          <canvas id="trainingChart" width="800" height="250"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>AxonNova v1.0</h4>
+          <p>Next-generation Neural Intelligence Framework</p>
+        </div>
+        <div class="footer-section">
+          <h4>Healthcare Application</h4>
+          <p>Real-time prosthetic control via neural signal processing</p>
+        </div>
+        <div class="footer-section">
+          <h4>Features</h4>
+          <p>Dynamic Scaling | Contextual Memory | Ethics Guardrails</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>
