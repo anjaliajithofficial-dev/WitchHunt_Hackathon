@@ -109,9 +109,7 @@ The project includes a web dashboard where you can:
 
 ## 📊 Dashboard & Visualization
 
-                               ![AxonNova Dashboard]
-
-(./screenshots/dashboard_img.png)
+![AxonNova Dashboard] (./screenshots/dashboard_img.png)
 (./screenshots/live_demo_img.png)
 (./screenshots/live_demo_img2.png)
 (./screenshots/explainability_img.png)
