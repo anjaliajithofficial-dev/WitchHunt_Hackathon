@@ -36,20 +36,22 @@ The `ExplainabilityModule` provides transparency into the "Black Box." It genera
 
 ## 🛠️ System Architecture
 
-The framework is modularized into several key components:
+The AxonNova framework is organized into the following modular structure:
 
-- **`main.py`**: The central orchestrator that integrates the AI components into the unified AxonNova class.
+- **`app.py`**: The Flask application server that manages API endpoints for real-time data streaming, model retraining, and provides the backend support for the web dashboard.
 - **`models/`**:
-  - `dynamic_synapse.py`: Implements adaptive depth and synaptic pruning.
-  - `contextual_memory.py`: Manages the FIFO memory buffer and attention-based retrieval.
+  - `dynamic_synapse.py`: Contains the `DynamicSynapticLayer` for complexity-based scaling and the `SynapticPruningModule`.
+  - `contextual_memory.py`: Implements the attention-based short-term memory buffer for task-specific retention.
 - **`inference/`**:
-  - `guardrail_layer.py`: Handles safety checks and output filtering.
-- **`data/`**:
-  - `synthetic_neural_data.py`: Generates EEG/EMG-like signals for 9 movement classes: _Rest, Grasp, Release, Flex, Extend, Thumb Oppose, Point, Peace, and Fist._
-- **`web/`**:
-  - `index.html` & `script.js`: A sophisticated real-time dashboard for monitoring signal strength, prediction confidence, and system metrics.
+  - `guardrail_layer.py`: Implements real-time ethics and safety filtering, ensuring signals stay within defined anatomical ranges.
 
----
+- **`demo/`**:
+  - `prosthetic_simulator.py`: An interactive simulation environment used to visualize how the AI predictions translate into prosthetic hand movements.
+- **`utils/`**:
+  - `explainability.py`: The `ExplainabilityModule` which provides gradient-based feature importance and human-readable decision reasoning.
+- **`templates/` & `static/`**:
+  - `index.html`: The frontend dashboard interface.
+  - `script.js` & `style.css`: The client-side logic for real-time charting, signal visualization, and UI styling.
 
 ## 📊 Dashboard & Visualization
 
@@ -68,6 +70,10 @@ The AxonNova Web Dashboard provides a real-time window into the framework's brai
 - PyTorch
 - NumPy, SciPy, Matplotlib
 - Flask (for the Web Dashboard)
+- torch>=2.0.0
+- scikit-learn>=1.3.0
+- pandas>=2.0.0
+- tqdm
 
 ---
 
