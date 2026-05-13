@@ -109,10 +109,11 @@ The project includes a web dashboard where you can:
 
 ## 📊 Dashboard & Visualization
 
-![AxonNova Dashboard] (./screenshots/dashboard_img.png)
-(./screenshots/live_demo_img.png)
-(./screenshots/live_demo_img2.png)
-(./screenshots/explainability_img.png)
-(./screenshots/metrics_img.png)
-(./screenshots/metrics_img2.png)
+![AxonNova Dashboard] (screenshots/dashboard_img.png)
+![Live Demo](screenshots/live_demo_img.png)
+![Live Demo](screenshots/live_demo_img2.png)
+![Explainability](screenshots/explainability_img.png)
+![Metrics](screenshots/metrics_img.png)
+![Metrics](screenshots/metrics_img2.png)
+
 The AxonNova Web Dashboard provides a real-time window into the framework's brain...
